@@ -92,7 +92,7 @@ function calculateMacronutrition(
 
   const faktorAktivitasK = [1.2, 1.375, 1.55, 1.725, 1.9];
   const levelAktivitasK = faktorAktivitasK[levelAktivitas - 1] || 1.9;
-  const totalKalori = bmr * levelAktivitasK;
+  const totalKalori = Math.round(bmr * levelAktivitasK);
 
   // MENGHITUNG KEBUTUHAN PROTEIN
   const totalProtein = Math.round(
