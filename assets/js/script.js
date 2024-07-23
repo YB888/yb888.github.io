@@ -1,12 +1,16 @@
 // FUNGSI UNTUK MENDAPATKAN INPUT DARI USER
 function getInputUser() {
+  const date = new Date();
+
   const inputUsia = document.getElementById("iUsia").value;
-  const umur = new Date().getFullYear() - Number(inputUsia.split("-")[0]);
+  const umur = date.getFullYear() - Number(inputUsia.split("-")[0]);
+
   const inputBeratBadan = Number(document.getElementById("iBeratBadan").value);
   const inputTinggiBadan = Number(
     document.getElementById("iTinggiBadan").value
   );
   const inputNama = document.getElementById("iNama").value;
+
   const selectOptionA = selectOptions("iJenisAktivitas");
   const selectOptionK = selectOptions("iKelamin");
 
@@ -18,6 +22,13 @@ function getInputUser() {
     inputTinggiBadan,
     selectOptionA
   );
+
+  const elementResult = document.getElementById("result");
+  if (elementResult.classList.contains("d-none")) {
+    elementResult.classList.remove("d-none");
+    elementResult.classList.add("d-flex");
+  }
+
 }
 
 // FUNGSI UNTUK MENGISI SELECT OPTION AKTIVITAS ATAU SELECT OPTION KELAMIN
@@ -73,7 +84,6 @@ function calculateMacronutrition(
   tinggiBadan,
   levelAktivitas
 ) {
-
   // MENGHITUNG KEBUTUHAN KALORI
   const bmr =
     kelamin === 1
@@ -97,30 +107,39 @@ function calculateMacronutrition(
     (totalKalori * [0.5, 0.55, 0.58, 0.6, 0.63][levelAktivitas - 1]) / 4
   );
 
-  displayResult(nama, totalKalori,totalProtein, totalKarbohidrat, totalLemak);
+  displayResult(nama, totalKalori, totalProtein, totalKarbohidrat, totalLemak);
 }
 
 // FUNGSI UNTUK MENAMPILKAN KEBUTUHAN KALORI PENGGUNA
-function displayResult(nama, totalKalori,totalProtein, totalKarbohidrat, totalLemak) {
+function displayResult(
+  nama,
+  totalKalori,
+  totalProtein,
+  totalKarbohidrat,
+  totalLemak
+) {
   const elementResult = document.getElementById("result");
   elementResult.innerHTML = `
-    <div class="container">
+    <div class="container mt-1" id="result">
       <div class="alert alert-secondary" role="alert">
-        <p>Halo ${nama}, Kebutuhan Kalori Anda Adalah <strong>${totalKalori}<strong></p>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          Launch demo modal
+        <p class="text-center ">Halo ${nama}, Kebutuhan Kalori Anda Adalah <strong class="fs-5">${totalKalori}</strong> Kalori.<br>Untuk Melihat Detail Kebutuhan Makronutrisi Anda Klik Tombol Dibawah!</p>
+        <button type="button" class="btn btn-success d-grid col-4 mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Detail Makronutrisi
         </button>
       </div>
     </div>`;
   const makronutrisi = [totalProtein, totalKarbohidrat, totalLemak];
   if (!document.getElementById("exampleModal")) {
-    document.body.insertAdjacentHTML("beforeend", displayDetailNutrisi(makronutrisi));
+    document.body.insertAdjacentHTML(
+      "beforeend",
+      displayDetailNutrisi(makronutrisi)
+    );
   }
 }
 
 // FUNGSI UNTUK MENAMPILKAN KEBUTUHAN MAKRONUTRISI (PROTEIN,LEMAK DAN KARBOHIDRAT) PENGGUNA
 function displayDetailNutrisi(makronutrisi) {
-  const [protein,karbohidrat,lemak]= makronutrisi;
+  const [protein, karbohidrat, lemak] = makronutrisi;
   return `    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -151,13 +170,54 @@ function displayDetailNutrisi(makronutrisi) {
             </ol>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
           </div>
         </div>
       </div>
-    </div>`
+    </div>`;
 }
 
+// Tambahkan fungsi untuk menampilkan pesan kesalahan
+function displayError(message) {
+  const elementError = document.getElementById("error");
+  elementError.innerHTML = `
+    
+      <div class="alert alert-danger" role="alert">
+        ${message}
+      </div>
+`;
 
-document.getElementById('btn-simpan').addEventListener('click',getInputUser);
+  // Menampilkan elemen error
+  elementError.classList.remove("d-none");
+  elementError.classList.add("d-flex");
+
+  // Menghilangkan elemen error setelah 1500ms
+  setTimeout(() => {
+    elementError.classList.remove("d-flex");
+    elementError.classList.add("d-none");
+  }, 1000);
+}
+
+function clearResult() {
+  const elementResult = document.getElementById("result");
+  // If the element has 'd-flex', hide it by adding 'd-none'
+  if (elementResult.classList.contains("d-flex")) {
+    elementResult.classList.remove("d-flex");
+    elementResult.classList.add("d-none");
+  }
+  console.log(elementResult);
+}
+
+document.addEventListener("click", function (e) {
+  if (e.target && e.target.id === "close") {
+    document.getElementById("iUsia").value = "";
+    document.getElementById("iBeratBadan").value = "";
+    document.getElementById("iTinggiBadan").value = "";
+    document.getElementById("iNama").value = "";
+    document.getElementById("iJenisAktivitas").selectedIndex = 0;
+    document.getElementById("iKelamin").selectedIndex = 0;
+    clearResult();
+  }
+});
+
+document.getElementById("btn-simpan").addEventListener("click", getInputUser);

@@ -4,127 +4,133 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NutriMate</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   </head>
   <body>
-    <div class="header">
-      <h1>NutriMate</h1>
-    </div>
     <!-- Error Content -->
-    <div class="container d-flex align-items-center" id="error"></div>
+    <div class="container vh-100">
+      <div class="header">
+        <h1 class="text-center fw-bold text-success mb-0">NutriMate</h1>
+        <p class="text-center text-muted fs-5 mb-2">
+          Menjaga Pola Makan Dengan Mengetahui Makronutrisi Anda
+        </p>
+      </div>
+      <div class="container d-flex" id="error"></div>
 
-    <div class="container-sm">
-      <!-- Main Content -->
-      <div class="main d-flex flex-column align-items-center">
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-default"
-            >Nama</span
-          >
-          <input
-            type="text"
-            class="form-control"
-            aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-default"
-            id="iNama"
-          />
-        </div>
-        <div class="input-group mb-3">
-          <label class="input-group-text" for="inputGroupSelect01"
-            >Jenis Kelamin</label
-          >
-          <select class="form-select" id="iKelamin">
-            <option selected>Pilih Jenis Kelamin...</option>
-            <option value="1">Laki-Laki</option>
-            <option value="2">Perempuan</option>
-          </select>
-        </div>
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-default"
-            >Usia</span
-          >
-          <input
-            type="date"
-            class="form-control"
-            aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-default"
-            id="iUsia"
-          />
-        </div>
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-default"
-            >Berat Badan</span
-          >
-          <input
-            type="text"
-            class="form-control"
-            aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-default"
-            placeholder="Cth:60"
-            id="iBeratBadan"
-          />
-          <span class="input-group-text" id="inputGroup-sizing-default"
-            >Kg</span
-          >
-        </div>
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-default"
-            >Tinggi Badan</span
-          >
-          <input
-            type="text"
-            class="form-control"
-            aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-default"
-            placeholder="Cth:170"
-            id="iTinggiBadan"
-          />
-          <span class="input-group-text" id="inputGroup-sizing-default"
-            >Cm</span
-          >
-        </div>
-        <div class="input-group mb-3">
-          <label class="input-group-text" for="inputGroupSelect01"
-            >Jenis Aktivitas</label
-          >
-          <select class="form-select" id="iJenisAktivitas">
-            <option selected>Pilih Jenis Aktivitas...</option>
-            <option value="1">
-              Sedentary (Sedikit Aktivitas / Tidak Pernah Latihan...)
-            </option>
-            <option value="2">
-              Ligthly (Latihan Ringan 1-3 Hari Per Minggu)
-            </option>
-            <option value="3">
-              Moderately (Latihan Sedang 3-5 Hari Per Minggu)
-            </option>
-            <option value="4">
-              Very Active (Latihan Berat 6-7 Hari Per Minggu)
-            </option>
-            <option value="5">
-              Super Active ( Aktivitas Yang Sangat Berat)
-            </option>
-          </select>
-        </div>
-        <div class="d-grid gap-2 col-6 mx-auto">
-          <button class="btn btn-success" type="button" id="btn-simpan">
-            Simpan Data
-          </button>
+      <div class="container-sm">
+        <!-- Main Content -->
+        <div class="main d-flex flex-column align-items-center">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default"
+              >Nama</span
+            >
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+              id="iNama"
+            />
+          </div>
+          <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01"
+              >Jenis Kelamin</label
+            >
+            <select class="form-select" id="iKelamin">
+              <option selected>Pilih Jenis Kelamin...</option>
+              <option value="1">Laki-Laki</option>
+              <option value="2">Perempuan</option>
+            </select>
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default"
+              >Usia</span
+            >
+            <input
+              type="date"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+              id="iUsia"
+            />
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default"
+              >Berat Badan</span
+            >
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+              placeholder="Cth:60"
+              id="iBeratBadan"
+            />
+            <span class="input-group-text" id="inputGroup-sizing-default"
+              >Kg</span
+            >
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default"
+              >Tinggi Badan</span
+            >
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+              placeholder="Cth:170"
+              id="iTinggiBadan"
+            />
+            <span class="input-group-text" id="inputGroup-sizing-default"
+              >Cm</span
+            >
+          </div>
+          <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01"
+              >Jenis Aktivitas</label
+            >
+            <select class="form-select" id="iJenisAktivitas">
+              <option selected>Pilih Jenis Aktivitas...</option>
+              <option value="1">
+                Sedentary (Sedikit Aktivitas / Tidak Pernah Latihan...)
+              </option>
+              <option value="2">
+                Ligthly (Latihan Ringan 1-3 Hari Per Minggu)
+              </option>
+              <option value="3">
+                Moderately (Latihan Sedang 3-5 Hari Per Minggu)
+              </option>
+              <option value="4">
+                Very Active (Latihan Berat 6-7 Hari Per Minggu)
+              </option>
+              <option value="5">
+                Super Active ( Aktivitas Yang Sangat Berat)
+              </option>
+            </select>
+          </div>
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-success" type="button" id="btn-simpan">
+              Simpan Data
+            </button>
+          </div>
         </div>
       </div>
+
+      <div class="container-sm mt-2 d-flex" id="result"></div>
+      <footer
+        class="text-center position-absolute bottom-0 start-50 translate-middle"
+      >
+        Created By ©
+        <a
+          href="https://web.whatsapp.com/send/?phone=6285956268296"
+          class="text-decoration-none link-success"
+          ><strong>YbDeveloper </strong></a
+        >2024
+      </footer>
     </div>
 
-    <div class="container-sm mt-3" id="result"></div>
-
-    <script src="script.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
   </body>
 </html>
