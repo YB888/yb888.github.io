@@ -205,7 +205,6 @@ function clearResult() {
     elementResult.classList.remove("d-flex");
     elementResult.classList.add("d-none");
   }
-  console.log(elementResult);
 }
 
 document.addEventListener("click", function (e) {
