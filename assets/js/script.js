@@ -1,10 +1,6 @@
 // FUNGSI UNTUK MENDAPATKAN INPUT DARI USER
 function getInputUser() {
-  const date = new Date();
-
   const inputUsia = document.getElementById("iUsia").value;
-  const umur = date.getFullYear() - Number(inputUsia.split("-")[0]);
-
   const inputBeratBadan = Number(document.getElementById("iBeratBadan").value);
   const inputTinggiBadan = Number(
     document.getElementById("iTinggiBadan").value
@@ -17,7 +13,7 @@ function getInputUser() {
   validasiInput(
     inputNama,
     selectOptionK,
-    umur,
+    inputUsia,
     inputBeratBadan,
     inputTinggiBadan,
     selectOptionA
@@ -121,9 +117,9 @@ function displayResult(
   const elementResult = document.getElementById("result");
   elementResult.innerHTML = `
     <div class="container mt-1" id="result">
-      <div class="alert alert-secondary" role="alert">
+      <div class="alert alert-secondary d-flex flex-column" role="alert">
         <p class="text-center ">Halo ${nama}, Kebutuhan Kalori Anda Adalah <strong class="fs-5">${totalKalori}</strong> Kalori.<br>Untuk Melihat Detail Kebutuhan Makronutrisi Anda Klik Tombol Dibawah!</p>
-        <button type="button" class="btn btn-success d-grid col-4 mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-success w-50 align-self-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Detail Makronutrisi
         </button>
       </div>
